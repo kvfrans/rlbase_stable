@@ -1,6 +1,6 @@
 ## rlbase
 
-![data/teaser.png]
+![](data/teaser.png)
 
 This is a codebase that implements simple reinforcement learning algorithms in JAX. It also has support for several environments. The idea is to have solid single-file implementations of various RL algorithms for research use. This codebase contains both online and offline methods.
 
