@@ -27,23 +27,23 @@ env_list = [
     'MountainCar-v0',
     'MountainCarContinuous-v0',
     # From DMC
-    'dmc_pendulum_swingup',
-    'dmc_acrobot_swingup',
-    'dmc_acrobot_swingup_sparse',
-    'dmc_cartpole_swingup', # has exorl dataset.
-    'dmc_cartpole_swingup_sparse',
-    'dmc_pointmass_easy',
-    'dmc_reacher_easy',
-    'dmc_reacher_hard',
-    'dmc_cheetah_run',  # has exorl dataset.
-    'dmc_hopper_hop',
-    'dmc_walker_stand', # has exorl dataset.
-    'dmc_walker_walk', # has exorl dataset.
-    'dmc_walker_run', # has exorl dataset.
-    'dmc_quadruped_walk', # has exorl dataset.
-    'dmc_quadruped_run', # has exorl dataset.
-    'dmc_humanoid_stand',
-    'dmc_humanoid_run',
+    'pendulum_swingup',
+    'acrobot_swingup',
+    'acrobot_swingup_sparse',
+    'cartpole_swingup', # has exorl dataset.
+    'cartpole_swingup_sparse',
+    'pointmass_easy',
+    'reacher_easy',
+    'reacher_hard',
+    'cheetah_run',  # has exorl dataset.
+    'hopper_hop',
+    'walker_stand', # has exorl dataset.
+    'walker_walk', # has exorl dataset.
+    'walker_run', # has exorl dataset.
+    'quadruped_walk', # has exorl dataset.
+    'quadruped_run', # has exorl dataset.
+    'humanoid_stand',
+    'humanoid_run',
     # Offline D4RL envs
     'antmaze-large-diverse-v2',
     'gc-antmaze-large-diverse-v2',
@@ -74,11 +74,10 @@ def make_env(env_name, **kwargs):
             return env
         env = make_env(env_name, task_name)
         env.reset()
-    elif 'dmc' in env_name: # DMC Control
+    elif '_' in env_name: # DMC Control
         import rlbase.common.envs.dmc as dmc2gym
         import os
         os.environ['DISPLAY'] = ':0'
-        env_name = env_name[4:] # Remove 'dmc_'
         suite, task = env_name.split('_', 1)
         if suite == 'pointmass':
             suite = 'point_mass'
