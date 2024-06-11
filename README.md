@@ -29,13 +29,36 @@ You can also refer to the singularity script in `deps/base_container.def` for fu
 
 ### Reproduction
 
-We've provided a set of stable results comparing each algorithm to a reference implementation. See this [wandb report]() for the full training curves.
+We've provided a set of stable results comparing each algorithm to a reference implementation. For full training curves, see the [wandb reports for online results](https://wandb.ai/kvfransmit/rlbase_benchmark/reports/rlbase_stable-Online-Results--Vmlldzo4Mjk3OTEw) and the [wandb reports for offline results](https://wandb.ai/kvfransmit/rlbase_benchmark/reports/rlbase_stable-Offline-Results--Vmlldzo4Mjk4MDYw).
 
 You can reproduce these results using the commands available at `run_baselines.py`.
 The basic starting point is to run the individual file, e.g.
 ```
 python algs_online/ppo.py --env_name walker_walk --agent.gamma 0.99
 ```
+
+Offline Results
+| Env                                | Best Performance (ours) | Original Performance (reference paper) |
+| :--------------------------------- | :---------------------: | ---------------------------------: |
+| exorl_cheetah_run                  |   257.5 (IQL-DDPG)  | ~250 (TD3) [source](https://arxiv.org/pdf/2201.13425)|
+| exorl_walker_run                   |   471.9 (IQL-DDPG)  | ~200 (TD3) [source](https://arxiv.org/pdf/2201.13425)|
+| halfcheetah-medium-expert-v2       |   83.8 (IQL)        | 90.7 (TD3+BC) [source](https://arxiv.org/pdf/2110.06169)|
+| walker2d-medium-expert-v2          |   106.8 (BC)        | 110.1 (TD3+BC) [source](https://arxiv.org/pdf/2110.06169)|
+| hopper-medium-expert-v2            |   98.9 (IQL)        | 98.7 (CQL) [source](https://arxiv.org/abs/2004.07219)|
+| gc-antmaze-large-diverse-v2        |   52.5 (IQL)        | 50.7 (IQL) [source](https://arxiv.org/abs/2307.11949)|
+| gc-maze2d-large-v1                 |   97.5 (IQL)        | N/A |
+
+Online Results
+| Env                                | Best Performance (ours)   | Best Performance (reference paper) |
+| HalfCheetah-v2                     | 11029 (SAC)               | 12138.8 (SAC) [source](https://github.com/thu-ml/tianshou)|
+| Walker2d-v2                        | 5101.8 (SAC-Tianshoulike) | 5007 (SAC)[source](https://github.com/thu-ml/tianshou)|
+| Hopper-v2                          | 2714.4 (REDQ)             | 3542.2 (SAC)[source](https://github.com/thu-ml/tianshou)|
+| cheetah_run                        | 918.9 (REDQ)              | 800 (SAC) [source](https://github.com/denisyarats/pytorch_sac)|
+| walker_run                         | 835.7 (TD3)               | 700 (SAC) [source](https://github.com/denisyarats/pytorch_sac)|
+| hopper_hop                         | 474.9 (TD3)               | 210 (SAC) [source](https://github.com/denisyarats/pytorch_sac)||
+| quadruped_run                      | 920.8 (TD3)               | 700 (SAC) [source](https://github.com/denisyarats/pytorch_sac)||
+| humanoid_run                       | 211.8 (REDQ)              | 90 (SAC) [source](https://github.com/denisyarats/pytorch_sac)||
+| pendulum_swingup                   | 790.2 (SAC)               | 920 (SAC) [source](https://github.com/denisyarats/pytorch_sac)||
 
 ### History
 
