@@ -3,13 +3,13 @@
 This is a codebase that implements simple reinforcement learning algorithms in JAX. It also has support for several environments. The idea is to have solid single-file implementations of various RL algorithms for research use. This codebase contains both online and offline methods.
 
 Online Algorithms Implemented:
-- Proximal Policy Optimization (PPO): `algs_online/ppo.py`
-- Soft Actor-Critic (SAC): `algs_online/sac.py`
-- Twin Delayed DDPG (TD3): `algs_online/td3.py`
+- (Proximal Policy Optimization)[https://arxiv.org/abs/1707.06347] (PPO): `algs_online/ppo.py`
+- (Soft Actor-Critic)[https://arxiv.org/abs/1801.01290] (SAC): `algs_online/sac.py`
+- (Twin Delayed DDPG)[https://arxiv.org/abs/1802.09477] (TD3): `algs_online/td3.py`
 
 Offline Algorithms Implemented:
-- Behavior Cloning (BC): `algs_offline/bc.py`
-- Implicit Q-Learning (IQL): `algs_offline/iql.py`
+- (Behavior Cloning)[https://www.semanticscholar.org/paper/A-Framework-for-Behavioural-Cloning-Bain-Sammut/1f4731d5133cb96ab30e08bf39dffa874aebf487] (BC): `algs_offline/bc.py`
+- (Implicit Q-Learning)[https://arxiv.org/abs/2110.06169] (IQL): `algs_offline/iql.py`
 
 Environments Supported:
 - (Online) Gym Mujoco Locomotion: `HalfCheetah-v2, CartPole-v1, etc`
