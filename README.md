@@ -1,5 +1,7 @@
 ## rlbase
 
+![data/teaser.png]
+
 This is a codebase that implements simple reinforcement learning algorithms in JAX. It also has support for several environments. The idea is to have solid single-file implementations of various RL algorithms for research use. This codebase contains both online and offline methods.
 
 Online Algorithms Implemented:
@@ -38,7 +40,7 @@ python algs_online/ppo.py --env_name walker_walk --agent.gamma 0.99
 ```
 
 Offline Results
-| Env                                | Best Performance (ours) | Original Performance (reference paper) |
+| Env                                | Best Performance (ours) | Best Original Performance (reference paper) |
 | :--------------------------------- | :---------------------: | ---------------------------------: |
 | exorl_cheetah_run                  |   257.5 (IQL-DDPG)  | ~250 (TD3) [source (exorl)](https://arxiv.org/pdf/2201.13425)|
 | exorl_walker_run                   |   471.9 (IQL-DDPG)  | ~200 (TD3) [source (exorl)](https://arxiv.org/pdf/2201.13425)|
@@ -49,7 +51,7 @@ Offline Results
 | gc-maze2d-large-v1                 |   97.5 (IQL)        | N/A |
 
 Online Results
-| Env                                | Best Performance (ours)   | Best Performance (reference paper) |
+| Env                                | Best Performance (ours)   | Best Original Performance (reference paper) |
 | :--------------------------------- | :---------------------: | ---------------------------------: |
 | HalfCheetah-v2                     | 11029 (SAC)               | 12138.8 (SAC) [source (tianshou)](https://github.com/thu-ml/tianshou)|
 | Walker2d-v2                        | 5101.8 (SAC-Tianshoulike) | 5007 (SAC)[source (tianshou)](https://github.com/thu-ml/tianshou)|

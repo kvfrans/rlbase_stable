@@ -64,7 +64,7 @@ def make_env(env_name, **kwargs):
     if 'exorl' in env_name:
         import os
         os.environ['DISPLAY'] = ':0'
-        import rlbase.common.envs.exorl.dmc as dmc
+        import envs.exorl.dmc as dmc
         _, env_name, task_name = env_name.split('_', 2)
         def make_env(env_name, task_name):
             # No Action Repeat, No Frame Stack.
@@ -75,7 +75,7 @@ def make_env(env_name, **kwargs):
         env = make_env(env_name, task_name)
         env.reset()
     elif '_' in env_name: # DMC Control
-        import rlbase.common.envs.dmc as dmc2gym
+        import envs.dmc as dmc2gym
         import os
         os.environ['DISPLAY'] = ':0'
         suite, task = env_name.split('_', 1)
@@ -93,7 +93,8 @@ def make_env(env_name, **kwargs):
             visualize_reward=visualize_reward)
         env = NormalizeActionWrapper(env)
     elif 'antmaze' in env_name:
-        from rlbase.common.envs.d4rl.d4rl_ant import GoalReachingMaze, MazeWrapper
+        import d4rl
+        from envs.d4rl.d4rl_ant import GoalReachingMaze, MazeWrapper
         if 'gc-antmaze' in env_name:
             if 'discrete' in env_name:
                 env = GoalReachingMaze('antmaze-large-diverse-v2', discrete_xy=True)
@@ -102,7 +103,8 @@ def make_env(env_name, **kwargs):
         else:
             env = MazeWrapper('antmaze-large-diverse-v2')
     elif 'maze2d' in env_name:
-        from rlbase.common.envs.d4rl.d4rl_ant import GoalReachingMaze, MazeWrapper
+        import d4rl
+        from envs.d4rl.d4rl_ant import GoalReachingMaze, MazeWrapper
         if 'gc-maze2d' in env_name:
             env = GoalReachingMaze('maze2d-large-v1')
         else:
@@ -112,7 +114,7 @@ def make_env(env_name, **kwargs):
         import d4rl.gym_mujoco
         env = gym.make(env_name)
     elif 'bandit' in env_name:
-        from rlbase.common.envs.bandit.bandit import BanditEnv
+        from envs.bandit.bandit import BanditEnv
         env = BanditEnv()
     else:
         env = gym.make(env_name)
@@ -122,16 +124,16 @@ def make_env(env_name, **kwargs):
 # For getting offline data.
 def get_dataset(env, env_name, **kwargs):
     if 'exorl' in env_name:
-        from rlbase.common.envs.exorl.exorl_utils import get_dataset
+        from envs.exorl.exorl_utils import get_dataset
         env_name_short = env_name.split('_', 1)[1]
         return get_dataset(env, env_name_short, **kwargs)
     elif 'ant' in env_name or 'maze2d' in env_name or 'kitchen' in env_name or 'halfcheetah' in env_name or 'walker2d' in env_name or 'hopper' in env_name:
-        from rlbase.common.envs.d4rl.d4rl_utils import get_dataset, normalize_dataset
+        from envs.d4rl.d4rl_utils import get_dataset, normalize_dataset
         dataset = get_dataset(env, env_name, **kwargs)
         dataset = normalize_dataset(env_name, dataset)
         return dataset
     elif 'exorl' in env_name in env_name:
-        from rlbase.common.envs.exorl.exorl_utils import get_dataset
+        from envs.exorl.exorl_utils import get_dataset
         return get_dataset(env, env_name, **kwargs)
     
 def make_vec_env(env_name, num_envs, **kwargs):
