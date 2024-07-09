@@ -31,7 +31,7 @@ You can also refer to the singularity script in `deps/base_container.def` for fu
 
 ### Reproduction
 
-We've provided a set of stable results comparing each algorithm to a reference implementation. For full training curves, see the [wandb reports for online results](https://wandb.ai/kvfransmit/rlbase_benchmark/reports/rlbase_stable-Online-Results--Vmlldzo4Mjk3OTEw) and the [wandb reports for offline results](https://wandb.ai/kvfransmit/rlbase_benchmark/reports/rlbase_stable-Offline-Results--Vmlldzo4Mjk4MDYw).
+We've provided a set of stable results comparing each algorithm to a reference implementation. For full training curves, see the [wandb reports for online results](https://api.wandb.ai/links/kvfransmit/4wcmwiyp) and the [wandb reports for offline results](https://api.wandb.ai/links/kvfransmit/r75oduch).
 
 You can reproduce these results using the commands available at `run_baselines.py`.
 The basic starting point is to run the individual file, e.g.
